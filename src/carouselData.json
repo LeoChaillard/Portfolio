@@ -1,0 +1,16 @@
+{
+  "slides": [
+    {
+      "src": "back.png",
+      "alt": "back"
+    },
+    {
+      "src": "ken.png",
+      "alt": "ken"
+    },
+    {
+      "src": "swordsman.png",
+      "alt": "swordsman"
+    }
+  ]
+}

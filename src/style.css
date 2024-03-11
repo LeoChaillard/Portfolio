@@ -1,0 +1,124 @@
+@font-face {
+  font-family: '8bitoperator';
+  src: local('8bitoperator'), url(./assets/8bitoperator_jve.woff) format('woff');
+}
+
+.menu {
+  width: 36vw;
+  height: 44vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  font-size: 2rem;
+  font-family: "8bitoperator";
+  color: #FAF9F6;
+}
+
+.item {
+  position: relative;
+  width: 11rem;
+  margin: 5px;
+  padding: 5px;
+}
+
+.item.active {
+  font-size: 2.5rem;
+}
+
+.item:hover {
+  cursor: pointer;
+}
+
+.selector {
+  position: absolute;
+  top: .5rem;
+  left: -2rem;
+  width: 2rem;
+  height: 2rem;
+  -webkit-animation: blink 0.8s infinite;
+}
+
+.selector-hidden {
+  display: none;
+}
+
+@-webkit-keyframes blink {
+  0% {color: transparent}
+  50% {color: white}
+  100% {color: transparent}
+}
+
+.about {
+  width: 36vw;
+  height: 44vh;
+  padding: 3rem 2.5rem;
+  position: relative;
+  font-family: "8bitoperator";
+  color: #FAF9F6;
+}
+
+.about-content {
+  font-size: 22px;
+  line-height: 2rem;
+}
+
+.exit-arrow {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  top: 0;
+  left: 1rem;
+}
+
+.exit-arrow:hover {
+  cursor: pointer;
+}
+
+.projects {
+  width: 36vw;
+  height: 44vh;
+  /*padding: 5rem;*/
+  position: relative;
+  font-family: "8bitoperator";
+  font-size: 22px;
+  line-height: 2rem;
+}
+
+.project-name, .project-description {
+  color: #3d74ff;
+}
+
+.project-name {
+  position: absolute;
+  top:1rem;
+  left: 12rem;
+}
+
+.project-description {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+  width: 28rem;
+}
+
+.see-details {
+  position: absolute;
+  bottom: 3rem;
+  left: 4rem;
+  font-family: "8bitoperator";
+  color: #3d74ff;
+  font-size: 20px;
+  background-color: #e0e0e0;
+  padding: .2rem;
+  border-radius: 10px;
+}
+
+.current-date {
+  position: absolute;
+  top: .5rem;
+  left: 1rem;
+  font-family: "8bitoperator";
+}
