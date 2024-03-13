@@ -56,21 +56,23 @@ export function Console() {
   return (
       <div className="console">
         <div className="console-shell">
-          <h5 className="play-text">{on ? "Playing..." : "Console turned off..."}</h5>
-          <MenuButton/>
-          <Joystick on={on}/>
-          <div className="console-screen-border">
-            <div className={false ? "black-screen-hidden" : "black-screen"}>
-              <div className={(on && booting) ? "boot-screen" : "boot-screen-hidden"}><p id="scrolling-brand" className="scrolling-brand">CHAILLARD<span className="registered">&#174;</span></p></div>
-              <div id="console-menu" className={(on && !booting) ? "console-menu" : "console-menu-hidden"}>
-                <Battery on={on} shutdown={bootConsole} duration={5}/>
-                <DisplayController on={on} booting={booting}/>
+          <div className="console-shell-relative">
+            <h5 className="play-text">{on ? "Playing..." : "Console turned off..."}</h5>
+            <MenuButton/>
+            <Joystick on={on}/>
+            <div className="console-screen-border">
+              <div className={false ? "black-screen-hidden" : "black-screen"}>
+                <div className={(on && booting) ? "boot-screen" : "boot-screen-hidden"}><p id="scrolling-brand" className="scrolling-brand">CHAILLARD<span className="registered">&#174;</span></p></div>
+                <div id="console-menu" className={(on && !booting) ? "console-menu" : "console-menu-hidden"}>
+                  <DisplayController on={on} booting={booting}/>
+                  <Battery on={on} shutdown={bootConsole} duration={5}/>
+                </div>
               </div>
+              <h6 className="console-brand">CHAILLARD</h6>
             </div>
-            <h6 className="console-brand">CHAILLARD</h6>
+            <BootButton bootConsole={booting ? null : bootConsole} on={on}/>
+            <ConsoleButtons/>
           </div>
-          <BootButton bootConsole={booting ? null : bootConsole} on={on}/>
-          <ConsoleButtons/>
         </div>
       </div>
   );

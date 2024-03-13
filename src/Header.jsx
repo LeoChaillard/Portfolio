@@ -7,19 +7,19 @@ import ResumeFile from "./assets/Resume_Leo_Chaillard.pdf";
 const useIcons = () => {
   const Email = () => {
     return (
-      <a href="mailto:leochaillard@gmail.com"><SiGmail size={30}/></a>
+      <a href="mailto:leochaillard@gmail.com"><SiGmail/></a>
     );
   };
 
   const Git = () => {
     return (
-      <a href="https://github.com/LeoChaillard" target="_blank" rel="noreferrer"><FaGithub size={30}/></a>
+      <a href="https://github.com/LeoChaillard" target="_blank" rel="noreferrer"><FaGithub/></a>
     );
   };
 
   const Resume = () => {
     return (
-      <a href={ResumeFile} target="_blank" rel="noopener noreferrer"><RiFileUserLine size={30}/></a>
+      <a href={ResumeFile} target="_blank" rel="noopener noreferrer"><RiFileUserLine/></a>
     );
   };
 
