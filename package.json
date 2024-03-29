@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "private": true,
-  "homepage": "https://leochaillard.github.io/Portfolio",
+  "homepage": "https://leocaillard.io",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -19,6 +19,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "framer-motion": "^11.0.3",
+    "gsap": "^3.12.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",

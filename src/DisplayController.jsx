@@ -9,19 +9,19 @@ import { KeyInput } from "./KeyInput"
 
 import { useTimer } from "./useTimer";
 
-const DisplayScreen = ({screen, setScreen}) =>
+const DisplayScreen = ({localization, projectID, setProjectID, screen, setScreen}) =>
 {
   let display;
   switch (screen)
   {
     case Screens.Menu:
-      display = <Menu setScreen={setScreen}/>
+      display = <Menu localization={localization} setScreen={setScreen}/>
     break;
     case Screens.About:
-      display = <About setScreen={setScreen}/>
+      display = <About localization={localization} setScreen={setScreen}/>
     break;
     case Screens.Projects:
-      display = <Projects setScreen={setScreen}/>
+      display = <Projects localization={localization} projectID={projectID} setProjectID={setProjectID} setScreen={setScreen}/>
     break;
   }
   return display;
@@ -93,8 +93,7 @@ const showProjectskeys = () =>
   rightTriangle.classList.add("highlighted");
 }
 
-export function DisplayController ({on, booting}) {
-  const [currentScreen, setScreen] = useState(Screens.Menu);
+export function DisplayController ({localization, projectID, setProjectID, currentScreen, setScreen, on, booting}) {
 
   const controller = new Controller();
   const inputControls = controller.getControls();
@@ -155,8 +154,6 @@ export function DisplayController ({on, booting}) {
   }
 
   return (
-    <div>
-      <DisplayScreen screen={currentScreen} setScreen={setScreen}/>
-    </div>
+    <DisplayScreen localization={localization} projectID={projectID} setProjectID={setProjectID} screen={currentScreen} setScreen={setScreen}/>
   );
 }

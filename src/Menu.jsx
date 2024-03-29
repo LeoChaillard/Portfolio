@@ -7,11 +7,17 @@ import { Controller } from "./Controller"
 import { Screens } from "./Screens"
 import { KeyInput } from "./KeyInput"
 import { Time } from "./Time"
+import { Localization } from "./Localization"
 
 import "./style.css";
 
-const items = [
-  { id: 1, name: "About" },
+const itemsEN = [
+  { id: 1, name: "About"},
+  { id: 2, name: "Projects" },
+];
+
+const itemsFR = [
+  { id: 1, name: "About"},
   { id: 2, name: "Projects" },
 ];
 
@@ -27,10 +33,12 @@ const MenuItem = ({ item, active, setSelected, setHovered }) => (
   </div>
 );
 
-export function Menu ({setScreen}) {
+export function Menu ({localization, setScreen}) {
   const [selected, setSelected] = useState(undefined);
   const [cursor, setCursor] = useState(0);
   const [hovered, setHovered] = useState(undefined);
+
+  const items = localization === Localization.EN ? itemsEN : itemsFR;
 
   const controller = new Controller();
   const inputControls = controller.getControls();

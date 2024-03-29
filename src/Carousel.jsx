@@ -5,15 +5,14 @@ import { KeyInput } from "./KeyInput"
 
 import "./Carousel.css";
 
-export const Carousel = ({data}) => {
-  const [slide, setSlide] = useState(0);
+export const Carousel = ({projectID, setProjectID, slides, projects}) => {
 
-  const nextSlide = () => {
-    setSlide((slide + 1)%data.length);
+  const nextProject = () => {
+    setProjectID((projectID + 1)%slides.length);
   };
 
-  const prevSlide = () => {
-    setSlide(slide === 0 ? data.length - 1 : slide - 1);
+  const prevProject = () => {
+    setProjectID(projectID === 0 ? slides.length - 1 : projectID - 1);
   };
 
   const controller = new Controller();
@@ -24,26 +23,41 @@ export const Carousel = ({data}) => {
   const isRightDirectionalPressed = inputControls[KeyInput.RightDirectionalPress];
   useEffect(() => {
     if (isLeftPressed || isLeftDirectionalPressed) {
-      prevSlide();
+      prevProject();
     }
   }, [isLeftPressed, isLeftDirectionalPressed]);
   useEffect(() => {
     if (isRightPressed || isRightDirectionalPressed) {
-      nextSlide();
+      nextProject();
     }
   }, [isRightPressed, isRightDirectionalPressed]);
 
   return(
     <div className="carousel">
-      {data.map((item, idx) => {
+      {slides.map((item, idx) => {
         return (
-          <img src={item.src} alt={item.alt} key={idx} className={slide === idx ? "slide" : "slide slide-hidden"}/>
+          <div key={idx}></div>
+          /*<img src={item.src} alt={item.alt} key={idx} className={projectID === idx ? "slide" : "slide slide-hidden"}/>*/
         );
       })}
+      <div>
+        {projects.map((project, idx) => {
+          return (
+            <div key={idx}>
+              <div className={projectID == idx ? "project-name" : "project-name-hidden"}>
+                {project.title}
+              </div>
+              <div className={projectID == idx ? "project-description" : "project-description-hidden"}>
+                {project.description}
+              </div>
+            </div>
+          );
+        })}
+      </div>
       <span className="indicators">
-        {data.map((_, idx) => {
+        {slides.map((_, idx) => {
             return (
-              <button key={idx} onClick={() => setSlide(idx)} className={slide === idx ? "indicator" : "indicator indicator-inactive"}></button>
+              <button key={idx} onClick={() => setProjectID(idx)} className={projectID === idx ? "indicator" : "indicator indicator-inactive"}></button>
             );
         })}
       </span>

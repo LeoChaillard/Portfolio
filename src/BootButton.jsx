@@ -42,8 +42,12 @@ export function BootButton({bootConsole, on}) {
 
   return (
     <div>
-      <GiPowerButton id="on-off-button" onClick={bootConsole} className="on-off-button"/>
-      <p className="on-off-text">ON/OFF</p>
+    <div className="boot-button-container">
+      <div id="on-off-button" onClick={bootConsole} className="on-off-button"/>
+    </div>
+    <p className="on-off-text">ON/OFF</p>
+
+
     </div>
   );
 }

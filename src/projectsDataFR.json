@@ -1,0 +1,12 @@
+{
+  "projectsFR": [
+    {
+      "title": "Temp Out",
+      "description": "C'est un jeu en 2.5D que j'ai développé dans le but d'en apprendre plus sur les \ndifférents éléments qui composent un jeu vidéo (shaders, recherche de chemin, \nmachines à états finis, mécaniques de jeu...). Le joueur se retrouve au fin fond \nd'un métro duquel il doit s'échapper jusqu'à la surface, en passant par des salles \nd'ennemies. Ces salles ont la particularité d'avoir des variations aléatoires de la \ntempérature ambiante. À tout moment, il est possible de basculer entre deux \npersonnages qui ont chacun leurs forces et leurs faiblesses."
+    },
+    {
+      "title": "Moteur physique",
+      "description": "Développement d'un moteur physique très basique, dans le but d'acquérir une \ncompréhension plus en profondeur des concepts majeurs inhérents aux \nmoteurs de jeu et au développement de jeux vidéo."
+    }
+  ]
+}

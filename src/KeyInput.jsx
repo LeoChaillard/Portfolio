@@ -10,5 +10,6 @@ export const KeyInput = Object.freeze({
   LeftDirectionalPress: 8,
   RightDirectionalPress: 9,
   ConfirmPress: 10,
-  MenuPress: 11
+  InteractPress: 11,
+  MenuPress: 12
 });

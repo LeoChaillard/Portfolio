@@ -6,17 +6,32 @@ import { Controller } from "./Controller";
 import { ConsoleButtons } from "./ConsoleButtons";
 import { MenuButton } from "./MenuButton";
 import { BootButton } from "./BootButton";
+import { DisplayContentController } from "./DisplayContentController";
+import { Screens } from "./Screens"
+import { SoundPlayer } from "./SoundPlayer"
+import { useInteraction } from "./useInteraction";
 
-import { useSound } from "use-sound";
-import beepSound from "./assets/nintendo-game-boy-startup.mp3";
+const Audio = ({playBeep, setPlayBeep}) =>
+{
+  const hasInteracted = useInteraction();
+  let audio = undefined;
+  if (hasInteracted)
+  {
+      audio = <SoundPlayer playBeep={playBeep} setPlayBeep={setPlayBeep}/>
+  }
 
-export function Console() {
+  return audio;
+};
+
+export function Console({localization}) {
   const [on, setOn] = useState(false);
   const [booting, setBooting] = useState(false);
   const lastBootAnimation = useRef(false);
   const controller = new Controller();
   const lastAnimation = false;
-  const [playStartupSound] = useSound(beepSound, { volume: 0.1 });
+  const [currentScreen, setScreen] = useState(Screens.None);
+  const [projectID, setProjectID] = useState(0);
+  const [playBeep, setPlayBeep] = useState(false);
 
   const bootConsole = () => {
       if (!on)
@@ -34,18 +49,20 @@ export function Console() {
             }
             else {
               lastBootAnimation.current = true;
-              playStartupSound();
+              setPlayBeep(true);
             }
         };
         bootAnimation.addEventListener("animationend", handleBootAnimation);
       }
       else
       {
+        setScreen(Screens.None);
         const consoleMenu = document.getElementById("console-menu");
         consoleMenu.classList.toggle("off");
 
         const handleShutdownAnimation = (event) => {
             setOn(false);
+
             consoleMenu.removeEventListener("animationend", handleShutdownAnimation);
             controller.setControllerLocked(true);
         };
@@ -55,25 +72,35 @@ export function Console() {
 
   return (
       <div className="console">
-        <div className="console-shell">
-          <div className="console-shell-relative">
-            <h5 className="play-text">{on ? "Playing..." : "Console turned off..."}</h5>
-            <MenuButton/>
-            <Joystick on={on}/>
-            <div className="console-screen-border">
-              <div className={false ? "black-screen-hidden" : "black-screen"}>
-                <div className={(on && booting) ? "boot-screen" : "boot-screen-hidden"}><p id="scrolling-brand" className="scrolling-brand">CHAILLARD<span className="registered">&#174;</span></p></div>
-                <div id="console-menu" className={(on && !booting) ? "console-menu" : "console-menu-hidden"}>
-                  <DisplayController on={on} booting={booting}/>
-                  <Battery on={on} shutdown={bootConsole} duration={5}/>
+        <Audio playBeep={playBeep} setPlayBeep={setPlayBeep}/>
+        <div className="console-shell-container">
+          <div id="console" className="console-shell">
+            <div className="console-shell-relative">
+              {/*<h5 className="play-text">{on ? "Playing..." : "Console turned off..."}</h5>*/}
+              <div className="console-screen-border">
+                <div id="black-screen" className={false ? "black-screen-hidden" : "black-screen"}>
+                  <div className={(on && booting) ? "boot-screen" : "boot-screen-hidden"}><p id="scrolling-brand" className="scrolling-brand">CHAILLARD<span className="registered">&#174;</span></p></div>
+                  <div id="console-menu" className={(on && !booting) ? "console-menu" : "console-menu-hidden"}>
+                    <DisplayController on={on} localization={localization} projectID={projectID} setProjectID={setProjectID} currentScreen={currentScreen} setScreen={setScreen} on={on} booting={booting}/>
+                    <Battery on={on} shutdown={bootConsole} duration={5}/>
+                  </div>
                 </div>
               </div>
-              <h6 className="console-brand">CHAILLARD</h6>
+              <div className="buttons">
+                <h6 className="console-brand">Chaillard <span>GAME BOY</span><span className="trademark">TM</span></h6>
+                <Joystick on={on}/>
+                <ConsoleButtons/>
+                <MenuButton/>
+                <BootButton bootConsole={booting ? null : bootConsole} on={on}/>
+              </div>
             </div>
-            <BootButton bootConsole={booting ? null : bootConsole} on={on}/>
-            <ConsoleButtons/>
           </div>
         </div>
+
+        <div className="console-content-display-container">
+            <DisplayContentController on={on} localization={localization} projectID={projectID} setProjectID={setProjectID} currentScreen={currentScreen}/>
+        </div>
+
       </div>
   );
 }

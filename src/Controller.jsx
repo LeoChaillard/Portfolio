@@ -30,6 +30,7 @@ export class Controller {
     const leftDirectionalPress = useClickPress("left-directional");
     const rightDirectionalPress = useClickPress("right-directional");
     const confirmPress = useClickPress("confirm");
+    const interactPress = useClickPress("interact");
     const menuPress = useClickPress("menu");
 
     const controls = [
@@ -44,6 +45,7 @@ export class Controller {
       leftDirectionalPress,
       rightDirectionalPress,
       confirmPress,
+      interactPress,
       menuPress
     ];
 
