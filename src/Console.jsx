@@ -45,6 +45,7 @@ export function Console({localization}) {
             if (lastBootAnimation.current) {
               lastBootAnimation.current = false;
               setBooting(false);
+              setScreen(Screens.Menu);
               bootAnimation.removeEventListener("animationend", handleBootAnimation);
             }
             else {
@@ -98,7 +99,7 @@ export function Console({localization}) {
         </div>
 
         <div className="console-content-display-container">
-            <DisplayContentController on={on} localization={localization} projectID={projectID} setProjectID={setProjectID} currentScreen={currentScreen}/>
+            <DisplayContentController localization={localization} projectID={projectID} setProjectID={setProjectID} currentScreen={currentScreen}/>
         </div>
 
       </div>

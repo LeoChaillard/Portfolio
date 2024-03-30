@@ -104,11 +104,11 @@ export function DisplayController ({localization, projectID, setProjectID, curre
   useEffect(() => {
     if (currentScreen != Screens.Menu)
     {
-      if (!on || isBackspacePressed || isMenuPressed) {
+      if (isBackspacePressed || isMenuPressed) {
         setScreen(Screens.Menu);
       }
     }
-  }, [on, isBackspacePressed, isMenuPressed]);
+  }, [isBackspacePressed, isMenuPressed]);
 
   useEffect(() => {
     if (on && !booting)
