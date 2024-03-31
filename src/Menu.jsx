@@ -17,14 +17,15 @@ const itemsEN = [
 ];
 
 const itemsFR = [
-  { id: 1, name: "About"},
-  { id: 2, name: "Projects" },
+  { id: 1, name: "A Propos"},
+  { id: 2, name: "Projets" },
 ];
 
 const MenuItem = ({ item, active, setSelected, setHovered }) => (
   <div
     className={`item ${active ? "active" : ""}`}
     onClick={() => setSelected(item)}
+    ontouchstart={() => setSelected(item)}
     onMouseEnter={() => setHovered(item)}
     onMouseLeave={() => setHovered(undefined)}
   >

@@ -2,11 +2,11 @@
   "projects": [
     {
       "title": "Temp Out",
-      "description": "A simple 2.5D game I've been developping to challenge myself to learn about \nthe various elements that compose a video game (shaders, pathfinding, state \nmachines, gameplay mechanics...). The player finds himself deep down a subway \nfrom which he has to escape to the top while going through rooms of enemies. \nThose rooms have the particularity to have random variations of the ambient \ntemperature. It is possible to switch at any time between two characters who \nboth have their own strengths and weaknesses."
+      "description": "A simple 2.5D game I've been developping to challenge myself to learn about the \nvarious elements that compose a video game (shaders, pathfinding, state machines, \ngameplay mechanics...). \n\nThe player finds himself deep down a subway from which he has to escape to the \ntop while going through rooms of enemies. Those rooms have the particularity to \nhave random variations of the ambient temperature. It is possible to switch at any \ntime between two characters who both have their own strengths and weaknesses."
     },
     {
       "title": "Physics Engine",
-      "description": "Developpement of a very basic physics engine in order to get a more in-depth \nunderstanding of the major concepts inherent to game engines and game \ndevelopment."
+      "description": "Developement of a very basic physics engine in order to get a more in-depth \nunderstanding of the major concepts inherent to game engines and game \ndevelopment."
     }
   ]
 }

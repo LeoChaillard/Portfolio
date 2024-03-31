@@ -41,6 +41,9 @@ export function Header({localization, setLocalization}) {
   const {Email, Git, Resume} = useIcons();
 
   const resume = localization === Localization.EN ? ResumeFileEN : ResumeFileFR;
+  const emailText = localization == Localization.EN ? "My E-mail: leochaillard@gmail.com" : "Mon E-mail : leochaillard@gmail.com";
+  const gitText = localization == Localization.EN ? "My GitHub Page" : "Ma Page GitHub";
+  const resumeText = localization == Localization.EN ? "My Resume" : "Mon CV";
 
   const showPopup = (popupID) => {
       const popup = document.getElementById(popupID);
@@ -81,15 +84,15 @@ export function Header({localization, setLocalization}) {
 
         <div className="icon">
           <Email showPopup={showPopup} hidePopup={hidePopup}/>
-          <div id="email-popup" className="popup-hidden">My Email: leochaillard@gmail.com</div>
+          <div id="email-popup" className="popup-hidden">{emailText}</div>
         </div>
         <div className="icon">
           <Git showPopup={showPopup} hidePopup={hidePopup}/>
-          <div id="git-popup" className="popup-hidden">My GitHub Page</div>
+          <div id="git-popup" className="popup-hidden">{gitText}</div>
         </div>
         <div className="icon">
           <Resume resume={resume} showPopup={showPopup} hidePopup={hidePopup}/>
-          <div id="resume-popup" className="popup-hidden">My Resume</div>
+          <div id="resume-popup" className="popup-hidden">{resumeText}</div>
         </div>
 
         <div>

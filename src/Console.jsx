@@ -77,7 +77,6 @@ export function Console({localization}) {
         <div className="console-shell-container">
           <div id="console" className="console-shell">
             <div className="console-shell-relative">
-              {/*<h5 className="play-text">{on ? "Playing..." : "Console turned off..."}</h5>*/}
               <div className="console-screen-border">
                 <div id="black-screen" className={false ? "black-screen-hidden" : "black-screen"}>
                   <div className={(on && booting) ? "boot-screen" : "boot-screen-hidden"}><p id="scrolling-brand" className="scrolling-brand">CHAILLARD<span className="registered">&#174;</span></p></div>
@@ -88,7 +87,7 @@ export function Console({localization}) {
                 </div>
               </div>
               <div className="buttons">
-                <h6 className="console-brand">Chaillard <span>GAME BOY</span><span className="trademark">TM</span></h6>
+                <h6 className="console-brand">Chaillard <span>GAME GAR</span><span className="trademark">TM</span></h6>
                 <Joystick on={on}/>
                 <ConsoleButtons/>
                 <MenuButton/>

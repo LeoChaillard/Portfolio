@@ -51,6 +51,7 @@ button {
   /*font-family: "Press Start 2P", sans-serif;*/
   font-family: "gill-sans;", sans-serif;
   font-size: calc(1.4 * var(--viewport-width));
+  overflow: hidden;
 }
 
 /*****Header*****/
@@ -132,7 +133,6 @@ button {
   flex: 1;
   display: flex;
   flex-direction: row;
-  align-items: center;
   padding: 0 calc(10 * var(--viewport-width));
 }
 
@@ -147,17 +147,15 @@ button {
   flex: 2.5;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
   font-family: "gill-sans", sans-serif;
-  font-size: calc(1.5 * var(--viewport-width));
-  line-height: calc(1.9 * var(--viewport-width));
+  font-size: calc(1.4 * var(--viewport-width));
+  line-height: calc(1.5 * var(--viewport-width));
 }
 
 .wrapper {
   position: relative;
   width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -173,14 +171,23 @@ button {
 .card-container {
   transform-style: preserve-3d;
   transition: all 0.5s ease;
-  margin-top: calc(11 * var(--viewport-width));
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .flip-card {
   transform: rotateY(180deg);
 }
 
-.page-welcome-container, .about-content-display-container, .projects-content-display-container {
+.page-welcome-container,
+.about-content-display-container,
+.projects-content-display-container {
   display: flex;
   flex-direction: column;
   gap: calc(5 * var(--viewport-height));
@@ -188,10 +195,10 @@ button {
   width: 100%;
   position: absolute;
   backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
 }
 
 .projects-content-display-container{
-  position: absolute;
   animation: slide 0.5s forwards;
 }
 
@@ -208,11 +215,15 @@ button {
   animation: rotateBack 0.5s forwards;
 }
 
-.about-content-display-title, .projects-content-display-title {
-
+.about-content-display-title h2, .projects-content-display-title h2 {
+  font-size: calc(2.5 * var(--viewport-width));
 }
 
-.about-content-display-description,.projects-content-display-description {
+.page-welcome-title h2 {
+  font-size: calc(3 * var(--viewport-width));
+}
+
+.page-welcome-description, .about-content-display-description,.projects-content-display-description {
   border-left: calc(0.7 * var(--viewport-height)) dotted #0e0e1b;
   padding-left: calc(2 * var(--viewport-width));
   white-space: pre;
@@ -231,16 +242,6 @@ button {
   color: #c4bebb;
 }
 
-.page-welcome-title {
-
-}
-
-.page-welcome-description {
-  border-left: calc(0.7 * var(--viewport-height)) dotted #0e0e1b;
-  padding-left: calc(2 * var(--viewport-width));
-  white-space: pre;
-}
-
 .console-shell-container{
   flex: 1.5;
   width: 100%;
@@ -253,10 +254,10 @@ button {
 
 .console-shell{
   width: calc(21 * var(--viewport-width));
-  height: calc(62   * var(--viewport-height));
+  height: calc(31.5 * var(--viewport-width));
   padding: calc(1.5 * var(--viewport-width));
   background-color: #c4bebb;
-  box-shadow: 20px 25px 7px #1e1e1e, 0px 0px 5px black inset;
+  box-shadow: calc(1.3 * var(--viewport-width)) calc(1.6 * var(--viewport-width)) calc(0.5 * var(--viewport-width)) #1e1e1e, 0 0 calc(0.3 * var(--viewport-width)) black inset;
   border-radius: calc(0.5 * var(--viewport-width));
   border-bottom-right-radius: calc(3 * var(--viewport-width));
 }
@@ -264,9 +265,6 @@ button {
 .console-shell-relative{
   display: flex;
   flex-direction: column;
-  /*gap: 2rem;*/
-  /*justify-content: center;*/
-  /*align-items: center;*/
   position: relative;
   width: 100%;
   height: 100%;
@@ -281,7 +279,7 @@ button {
   background-color: #474c52;
   border-radius: calc(0.5 * var(--viewport-width));
   border-bottom-right-radius: calc(3 * var(--viewport-width));
-  box-shadow: 0px 0px 5px #101010 inset;
+  box-shadow: 0 0 calc(0.3 * var(--viewport-width)) #101010 inset;
 }
 
 .buttons {
@@ -296,7 +294,7 @@ button {
   background-color: #49524f;
   width: 62%;
   height: 75%;
-  box-shadow: 0px 0px 5px black inset;
+  box-shadow: 0px 0px calc(0.3 * var(--viewport-width)) black inset;
 }
 
 .black-screen-hidden {
@@ -309,7 +307,7 @@ button {
   background-color: #bfd2ff;
   width: 100%;
   height: 100%;
-  box-shadow: 0px 0px 2px black;
+  box-shadow: 0px 0px calc(0.2 * var(--viewport-width)) black;
   text-align: center;
   justify-content: center;
   justify-content: flex-start;
@@ -342,10 +340,29 @@ button {
   font-size: calc(0.9 * var(--viewport-width));
   color: #1f1e39;
   font-family: 'gill-sans-bold';
+
 }
 
 .console-brand span {
   font-size: calc(1.4 * var(--viewport-width));
+}
+
+.letter-rotation-x {
+  display: inline-block;
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+.letter-rotation-y {
+  display: inline-block;
+  -moz-transform: scale(1, -1);
+  -webkit-transform: scale(1, -1);
+  -o-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
 }
 
 .console-brand .trademark{
@@ -360,7 +377,7 @@ button {
   color: #081820;
   width: 100%;
   height: 100%;
-  box-shadow: 0px 0px 2px black;
+  box-shadow: 0px 0px calc(0.2 * var(--viewport-width)) black;
   animation: fadein 1s linear forwards;
 }
 
@@ -372,38 +389,37 @@ button {
   display: none;
 }
 
-.console-battery {
+.console-battery, .console-battery-warning {
   position: absolute;
   width: calc(1.4 * var(--viewport-width));
-  height: calc(4 * var(--viewport-height));
+  height: calc(1.9 * var(--viewport-width));
   top: calc(0.1 * var(--viewport-height));
   right: calc(0.5 * var(--viewport-width));
 }
 
 .console-battery-warning {
-  position: absolute;
-  width: calc(1.4 * var(--viewport-width));
-  height: calc(4 * var(--viewport-height));
-  top: calc(0.1 * var(--viewport-height));
-  right: calc(0.5 * var(--viewport-width));
   color: darkred;
   -webkit-animation: warning-blink 1s infinite;
 }
 
 .boot-button-container{
   position: absolute;
-  top: calc(22 * var(--viewport-height));
-  left: calc(8.3 * var(--viewport-width));
-  transform: rotate(-25deg);
+  top: calc(9.7 * var(--viewport-width));
+  left: calc(8.7 * var(--viewport-width));
+  /*transform: rotate(-25deg);*/
   padding: calc(0.2 * var(--viewport-width));
   border-radius: calc(2 * var(--viewport-width));
-  box-shadow: 0px 5px 5px #666 inset;
+  box-shadow: 0 calc(0.3 * var(--viewport-width)) calc(0.3 * var(--viewport-width)) #666 inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .on-off-button {
-  width: calc(2.2 * var(--viewport-width));
-  height: calc(1.3 * var(--viewport-height));
-  box-shadow: 0px 0px 4px black inset;
+  width: calc(2 * var(--viewport-width));
+  height: calc(0.5 * var(--viewport-width));
+  box-shadow: 0 0 calc(0.25 * var(--viewport-width)) black inset;
   border-radius: calc(0.5 * var(--viewport-width));
   background-color: #86848b;
   color: #1e1e1e;
@@ -418,9 +434,9 @@ button {
 
 .on-off-text {
   position: absolute;
-  transform: rotate(-25deg);
-  top: calc(24 * var(--viewport-height));
-  left: calc(9 * var(--viewport-width));
+  /*transform: rotate(-25deg);*/
+  top: calc(10.8 * var(--viewport-width));
+  left: calc(8.8 * var(--viewport-width));
   font-family: "gill-sans-bold";
   font-size: calc(0.55 * var(--viewport-width));
   color: #1f1e39;
@@ -429,14 +445,14 @@ button {
 .joystick {
   position: absolute;
   left: 0%;
-  top: 23%;
+  top: 20%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   width: calc(6.5 * var(--viewport-width));
   height: calc(6.5  * var(--viewport-width));
-  box-shadow: 5px 10px 10px #999 inset;
+  box-shadow: calc(0.3 * var(--viewport-width)) calc(0.6 * var(--viewport-width)) calc(0.6 * var(--viewport-width)) #999 inset;
   border-radius: 100%;
 }
 
@@ -451,7 +467,9 @@ button {
   position: absolute;
   width: calc(1.7 * var(--viewport-width));
   height: calc(1.7  * var(--viewport-width));
-  background-color: #121212;
+  border-radius: 5%;
+  background-color: #303030;
+  box-shadow: 0 0 calc(0.1 * var(--viewport-width)) black;
 }
 
 .triangle:hover {
@@ -459,36 +477,38 @@ button {
 }
 
 .triangle-left {
-  transform: translateX(calc(-1.66 * var(--viewport-width)));
+  transform: translateX(calc(-1.63 * var(--viewport-width)));
 }
 
 .triangle-right {
-  transform: translateX(calc(1.66 * var(--viewport-width)));
+  transform: translateX(calc(1.63 * var(--viewport-width)));
 }
 
 .triangle-top {
-  transform: translateY(calc(-1.66 * var(--viewport-width)));
+  transform: translateY(calc(-1.63 * var(--viewport-width)));
 }
 
 .triangle-bottom {
-  transform: translateY(calc(1.66 * var(--viewport-width)));
+  transform: translateY(calc(1.63 * var(--viewport-width)));
 }
 
 .circle {
   width: calc(1.7 * var(--viewport-width));
   height: calc(1.7 * var(--viewport-width));
-  background-color: #121212;
+  background-color: #303030;
+  border-radius: 5%;
+  z-index: 2;
 }
 
 .console-buttons {
   position: absolute;
   right: 0%;
-  top: 31%;
+  top: 28%;
   display: flex;
   flex-direction: row;
   gap: calc(1 * var(--viewport-width));
-  transform: rotate(-25deg);
-  box-shadow: 0px 10px 10px #999 inset;
+  /*transform: rotate(-25deg);*/
+  box-shadow: 0 calc(0.6 * var(--viewport-width)) calc(0.6 * var(--viewport-width)) #999 inset;
   border-radius: calc(2 * var(--viewport-width));
   padding: calc(0.4 * var(--viewport-width));
 }
@@ -497,9 +517,9 @@ button {
   position: relative;
   width: calc(2.5 * var(--viewport-width));
   height: calc(2.5 * var(--viewport-width));
-  background-color: #5c203c;
+  background-color: #86848b;
   border-radius: 100%;
-  box-shadow: -1px 6px 5px #222;
+  box-shadow: 0 0 calc(0.1 * var(--viewport-width)) black, 0 0 calc(1 * var(--viewport-width)) #555 inset;
 }
 
 .console-button.highlighted {
@@ -530,21 +550,21 @@ button {
 
 .menu-button-container {
   position: absolute;
-  top: calc(22 * var(--viewport-height));
-  left: calc(5.5 * var(--viewport-width));
-  transform: rotate(-25deg);
+  top: calc(9.7 * var(--viewport-width));
+  left: calc(5.9 * var(--viewport-width));
+  /*transform: rotate(-25deg);*/
   padding: calc(0.2 * var(--viewport-width));
   border-radius: calc(2 * var(--viewport-width));
-  box-shadow: 0px 5px 5px #666 inset;
+  box-shadow: 0 calc(0.3 * var(--viewport-width)) calc(0.3 * var(--viewport-width)) #666 inset;
 }
 
 .menu-button {
-  width: calc(2.2 * var(--viewport-width));
-  height: calc(1.3 * var(--viewport-height));
+  width: calc(2 * var(--viewport-width));
+  height: calc(0.5 * var(--viewport-width));
   background-color: #86848b;
   color: #1e1e1e;
   border-radius: calc(0.5 * var(--viewport-width));
-  box-shadow: 0px 0px 4px black inset;
+  box-shadow: 0 0 calc(0.2 * var(--viewport-width)) black inset;
 }
 
 .menu-button.highlighted {
@@ -557,9 +577,9 @@ button {
 
 .menu-text {
   position: absolute;
-  transform: rotate(-25deg);
-  top: calc(24 * var(--viewport-height));
-  left: calc(6.3 * var(--viewport-width));
+  /*transform: rotate(-25deg);*/
+  top: calc(10.8 * var(--viewport-width));
+  left: calc(6.2 * var(--viewport-width));
   font-family: "gill-sans-bold";
   font-size: calc(0.55 * var(--viewport-width));
   color: #1f1e39;
@@ -633,11 +653,11 @@ button {
 
 @keyframes buttonBHighlighted {
   0% {transform: scale(1.0)}
-  100% {transform: scale(1.1); filter: drop-shadow(0px 0px 10px white); background-color: #802d54}
+  100% {transform: scale(1.1); filter: drop-shadow(0px 0px 10px white); background-color: rgba(200, 200, 200)}
 }
 
 @keyframes triangleHighlighted {
-  100% {filter: drop-shadow(0px 0px 1px #999); background-color: #2e2e2e}
+  100% {box-shadow: 0px 0px 10px #555 inset; background-color: rgba(150, 150, 150)}
 }
 
 @keyframes rotateFront {
@@ -663,79 +683,11 @@ button {
 }
 
 @keyframes slide {
-    100% { top: 0; }
+    100% { margin-top: 0; }
 }
+
 
 /********************RESPONSIVENESS******************************/
-
-@media screen and (min-width: 600px) and (max-width: 1367px) and (min-height: 600px) and (max-height: 800px) {
-  .console {
-    padding: 0 calc(6 * var(--viewport-width));
-  }
-
-  .card-container {
-      margin-top: calc(19 * var(--viewport-width));
-  }
-
-  .console-shell{
-    width: calc(22 * var(--viewport-width));
-    height: calc(37 * var(--viewport-width));
-  }
-
-  .console-battery {
-    height: calc(3 * var(--viewport-height));
-  }
-
-  .console-battery-warning {
-    height: calc(3 * var(--viewport-height));
-  }
-
-  .boot-button-container{
-    /*top: calc(17 * var(--viewport-height));
-    left: calc(8.5 * var(--viewport-width));*/
-    top: 70%;
-    left: 45%;
-  }
-
-  .on-off-button {
-    height: calc(1 * var(--viewport-height));
-  }
-
-  .on-off-text {
-    /*top: calc(18.5 * var(--viewport-height));
-    left: calc(9.2 * var(--viewport-width));*/
-    top: 76%;
-    left: 49%;
-  }
-
-  .joystick {
-    left: 2%;
-    top: 25%;
-  }
-
-  .console-buttons {
-    right: 2%;
-    top: 31%;
-  }
-
-  .menu-button-container {
-    /*top: calc(17 * var(--viewport-height));
-    left: calc(5.8 * var(--viewport-width));*/
-    top: 70%;
-    left: 31%;
-  }
-
-  .menu-button {
-    height: calc(1 * var(--viewport-height));
-  }
-
-  .menu-text {
-    /*top: calc(18.5 * var(--viewport-height));
-    left: calc(6.6 * var(--viewport-width));*/
-    top: 76%;
-    left: 35.5%;
-  }
-}
 
 @media screen and (min-width: 320px) and (max-width: 1080px) and (orientation: portrait) {
   :root {
