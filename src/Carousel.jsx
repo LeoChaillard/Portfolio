@@ -40,10 +40,10 @@ export const Carousel = ({projectID, setProjectID, slides, projects}) => {
           /*<img src={item.src} alt={item.alt} key={idx} className={projectID === idx ? "slide" : "slide slide-hidden"}/>*/
         );
       })}
-      <div>
+
         {projects.map((project, idx) => {
           return (
-            <div key={idx}>
+            <div key={idx} className={projectID == idx ? "project-container" : "project-container-hidden"}>
               <div className={projectID == idx ? "project-name" : "project-name-hidden"}>
                 {project.title}
               </div>
@@ -53,7 +53,7 @@ export const Carousel = ({projectID, setProjectID, slides, projects}) => {
             </div>
           );
         })}
-      </div>
+
       <span className="indicators">
         {slides.map((_, idx) => {
             return (

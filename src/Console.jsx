@@ -79,7 +79,7 @@ export function Console({localization}) {
             <div className="console-shell-relative">
               <div className="console-screen-border">
                 <div id="black-screen" className={false ? "black-screen-hidden" : "black-screen"}>
-                  <div className={(on && booting) ? "boot-screen" : "boot-screen-hidden"}><p id="scrolling-brand" className="scrolling-brand">CHAILLARD<span className="registered">&#174;</span></p></div>
+                  <div className={(on && booting) ? "boot-screen" : "boot-screen-hidden"}><p id="scrolling-brand" className="scrolling-brand">CHAILLARD{/*<span className="registered">&#174;</span>*/}</p></div>
                   <div id="console-menu" className={(on && !booting) ? "console-menu" : "console-menu-hidden"}>
                     <DisplayController on={on} localization={localization} projectID={projectID} setProjectID={setProjectID} currentScreen={currentScreen} setScreen={setScreen} on={on} booting={booting}/>
                     <Battery on={on} shutdown={bootConsole} duration={5}/>
@@ -87,7 +87,7 @@ export function Console({localization}) {
                 </div>
               </div>
               <div className="buttons">
-                <h6 className="console-brand">Chaillard <span>GAME GAR</span><span className="trademark">TM</span></h6>
+                <h6 className="console-brand">Chaillard <span>GAME BOX</span>{/*<span className="trademark">TM</span>*/}</h6>
                 <Joystick on={on}/>
                 <ConsoleButtons/>
                 <MenuButton/>
